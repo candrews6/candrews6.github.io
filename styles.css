@@ -1,21 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #333;
+    padding: 20px 40px;
+    background-color: #0077cc;
     color: #fff;
+    position: relative;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .nav-menu {
     list-style-type: none;
     display: flex;
+    transition: max-height 0.3s ease; /* Transition for max height */
+    /*overflow: hidden;*/ /* Hide overflow when closed */
+    max-height: 0; /* Start with a max-height of 0 */
+}
+
+.nav-menu.active {
+    max-height: 300px; /* Set a max-height for expansion */
+    display: flex; /* Display flex when active */
+    flex-direction: column; /* Column layout */
 }
 
 .nav-menu li {
@@ -25,16 +43,41 @@ header {
 .nav-menu a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ffcc00;
 }
 
 .hamburger {
     display: none;
     cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.3s ease; /* Add transition */
+}
+
+.hamburger.active {
+    transform: rotate(90deg); /* Rotate when active */
 }
 
 section {
-    padding: 50px;
+    padding: 60px 20px;
     text-align: center;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #0077cc;
+}
+
+h2 {
+    font-size: 28px;
 }
 
 .projects {
@@ -44,13 +87,56 @@ section {
 }
 
 .project-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 15px;
+    padding: 20px;
+    width: calc(33% - 40px);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-item img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005fa3;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #0077cc;
     color: #fff;
 }
 
@@ -62,7 +148,7 @@ footer {
         position: absolute;
         top: 60px;
         right: 0;
-        background-color: #333;
+        background-color: #0077cc;
         width: 100%;
     }
 
@@ -72,5 +158,15 @@ footer {
 
     .hamburger {
         display: block;
+    }
+
+    .project-item {
+        width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-item {
+        width: 100%;
     }
 }
