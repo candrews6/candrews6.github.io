@@ -5,6 +5,7 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    cursor: none;
 }
 
 header {
@@ -169,4 +170,15 @@ footer {
     .project-item {
         width: 100%;
     }
+}
+
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Cursor color */
+    pointer-events: none; /* Ignore pointer events */
+    transition: background-color 0.2s ease; /* Smooth transition */
+    z-index: 1000; /* Ensure it appears above other elements */
 }
